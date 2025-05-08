@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ task.title }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    .card { background: #fff; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0 auto; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    h1 { margin-top: 0; }
+    a { display: inline-block; margin-top: 20px; color: #007bff; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    <a href="{% url 'home' %}">← Назад к списку задач</a>
+  </div>
+</body>
+</html>

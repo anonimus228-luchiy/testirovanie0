@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Обновление задачи</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      width: 50%;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      text-align: left;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    a {
+      text-decoration: none;
+      color: #007bff;
+      display: inline-block;
+      margin-top: 10px;
+    }
+    a:hover {
+      color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Обновить задачу</h1>
+
+    <form method="post" action="{% url 'task_update' task.id %}">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{ task.id }}">
+
+      <label for="title">Заголовок:</label>
+      <input type="text" id="title" name="title" value="{{ task.title }}">
+
+      <label for="description">Описание:</label>
+      <textarea id="description" name="description" rows="5">{{ task.description }}</textarea>
+
+      <button type="submit">Сохранить изменения</button>
+    </form>
+
+    <a href="{% url 'home' %}">Назад</a>
+  </div>
+</body>
+</html>

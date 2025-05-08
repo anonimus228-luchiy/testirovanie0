@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Удаление задачи</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 0; }
+    h1 { text-align: center; color: #333; }
+    .container { width: 50%; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #ddd; text-align: center; }
+    button { background-color: #ff4d4d; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; }
+    button:hover { background-color: #e60000; }
+    a { text-decoration: none; color: #007bff; }
+    a:hover { color: #0056b3; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Удалить задачу</h1>
+
+    <p>Ты точно хочешь удалить задачу с ID {{ task.id }}?</p>
+
+    <form action="{% url 'task_delete' task.id %}" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="id" value="{{ task.id }}">
+      <button type="submit">Удалить</button>
+    </form>
+
+    <p><a href="{% url 'home' %}">Назад</a></p>
+  </div>
+</body>
+</html>
