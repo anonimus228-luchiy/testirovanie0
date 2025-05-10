@@ -1,16 +1,12 @@
-from django.shortcuts import render
+from rest_framework import status
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from .models import Task
+from .serializers import TaskSerializer
 
-def get_task(request):
-    return render(request, 'task.html')
+class TaskListCreateView(ListCreateAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
 
-def task_detail(request):
-    return render(request, 'task_detail.html')
-
-def task_update(request):
-    return render(request, 'task_update.html')
-
-def task_delete(request):
-    return render(request, 'task_delete.html')
-
-def task_create(request):
-    return render(request, 'task_create.html')
+class TaskDetailUpdateDeleteView(RetrieveUpdateDestroyAPIView):
+    queryset = Task.objects.all()
+    serializer_class = TaskSerializer
